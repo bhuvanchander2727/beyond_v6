@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Checkout — Beyond</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<svg class="sr" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;">
+  <defs>
+    <filter id="sharpen" x="0%" y="0%" width="100%" height="100%">
+      <feConvolveMatrix order="3" kernelMatrix="0 -0.5 0  -0.5 3 -0.5  0 -0.5 0" divisor="1" edgeMode="duplicate"/>
+    </filter>
+  </defs>
+</svg>
+<div class="bg-relief" aria-hidden="true"></div>
+<header class="nav-static">
+  <a class="logo" href="/" aria-label="Beyond home">
+    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="miter"><path d="M20 3.5 36.5 15.5 30.2 36.5H9.8L3.5 15.5Z"/></svg>
+  </a>
+  <a class="brand" href="/">Beyond</a>
+  <nav>
+    <a href="/shop">Shop</a>
+    <a href="/about">About</a>
+    <a href="/bag" class="bag-nav-link">Bag (0)</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="page-header">
+    <div class="head">
+      <h2>Checkout</h2>
+      <a href="/bag">Back to Bag</a>
+    </div>
+  </div>
+
+  <form id="checkout-form" novalidate>
+    <div class="checkout-layout">
+      <!-- Shipping Information -->
+      <div class="checkout-fields">
+        <div class="form-section">
+          <h3>1. Delivery Information</h3>
+          <div class="form-grid">
+            <div class="form-group col-full">
+              <label for="input-name">Full Name *</label>
+              <input type="text" id="input-name" name="name" required placeholder="e.g. Arjun Mehta">
+              <div class="error-text" id="error-name"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="input-email">Email Address *</label>
+              <input type="email" id="input-email" name="email" required placeholder="name@domain.com">
+              <div class="error-text" id="error-email"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="input-phone">Phone Number (10 digits) *</label>
+              <input type="tel" id="input-phone" name="phone" required placeholder="9876543210" maxlength="10">
+              <div class="error-text" id="error-phone"></div>
+            </div>
+
+            <div class="form-group col-full">
+              <label for="input-address">Street Address *</label>
+              <input type="text" id="input-address" name="address" required placeholder="Flat / Building, Street, Area">
+              <div class="error-text" id="error-address"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="input-city">City *</label>
+              <input type="text" id="input-city" name="city" required placeholder="Mumbai">
+              <div class="error-text" id="error-city"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="input-state">State *</label>
+              <input type="text" id="input-state" name="state" required placeholder="Maharashtra">
+              <div class="error-text" id="error-state"></div>
+            </div>
+
+            <div class="form-group col-full">
+              <label for="input-pincode">PIN Code (6 digits) *</label>
+              <input type="text" id="input-pincode" name="pincode" required placeholder="400001" maxlength="6">
+              <div class="error-text" id="error-pincode"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="form-section">
+          <h3>2. Payment Method</h3>
+          <div class="payment-options">
+            <label class="payment-option-card selected">
+              <input type="radio" name="paymentMethod" value="cod" checked>
+              <div>
+                <b>Cash on Delivery (COD)</b>
+                <div class="payment-desc">Pay in cash or UPI when your parcel is delivered to your doorstep.</div>
+              </div>
+            </label>
+
+            <label class="payment-option-card">
+              <input type="radio" name="paymentMethod" value="razorpay_placeholder">
+              <div>
+                <b>Online Payment (Razorpay Ready)</b>
+                <div class="payment-desc">UPI (Google Pay, PhonePe, Paytm), Credit/Debit Cards, NetBanking. (Gateway sandbox placeholder).</div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checkout Order Summary -->
+      <div class="checkout-sidebar">
+        <div class="bag-summary-card">
+          <h3 style="margin:0 0 20px 0; font-size:1.4rem; font-weight:500;">In Your Bag</h3>
+          <div id="checkout-summary-items" style="max-height: 300px; overflow-y: auto; margin-bottom: 20px;">
+            <!-- Loaded from cart.js -->
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span>Free (Standard Domestic)</span>
+          </div>
+          <div class="summary-row summary-total">
+            <span>Total Payable</span>
+            <span id="checkout-total-amount">₹0</span>
+          </div>
+
+          <button type="submit" class="btn checkout-btn" id="place-order-btn">Place Order</button>
+
+          <p style="margin:16px 0 0 0; font-size:0.85rem; color:var(--ink2); text-align:center;">
+            By placing your order, you agree to our 30-day return policy and terms of service.
+          </p>
+        </div>
+      </div>
+    </div>
+  </form>
+</main>
+
+<footer>
+  <div class="footer-newsletter">
+    <div class="newsletter-text">
+      <h3>Join the drop list</h3>
+      <p>Receive notice when limited fabric batches and seasonal garments are released.</p>
+    </div>
+    <div>
+      <form class="newsletter-form" id="footer-newsletter-form">
+        <input type="email" placeholder="Your email address" required aria-label="Email address for newsletter">
+        <button type="submit" class="btn">Join</button>
+      </form>
+      <div class="newsletter-msg" id="newsletter-msg"></div>
+    </div>
+  </div>
+  <p class="big" aria-hidden="true">Beyond</p>
+  <div class="foot">
+    <span>© 2026 Beyond</span>
+    <div>
+      <a href="/shop">Shop</a>
+      <a href="/about">About</a>
+      <a href="/returns">Returns</a>
+      <a href="/admin">Admin</a>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/cart.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

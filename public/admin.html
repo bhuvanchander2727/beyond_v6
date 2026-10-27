@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Admin Portal — Beyond</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<svg class="sr" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;">
+  <defs>
+    <filter id="sharpen" x="0%" y="0%" width="100%" height="100%">
+      <feConvolveMatrix order="3" kernelMatrix="0 -0.5 0  -0.5 3 -0.5  0 -0.5 0" divisor="1" edgeMode="duplicate"/>
+    </filter>
+  </defs>
+</svg>
+<div class="bg-relief" aria-hidden="true"></div>
+<header class="nav-static">
+  <a class="logo" href="/" aria-label="Beyond home">
+    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="miter"><path d="M20 3.5 36.5 15.5 30.2 36.5H9.8L3.5 15.5Z"/></svg>
+  </a>
+  <a class="brand" href="/">Beyond Admin</a>
+  <nav>
+    <a href="/shop">Shop</a>
+    <a href="/bag" class="bag-nav-link">Bag (0)</a>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- Login Section -->
+  <section id="admin-login-section" style="display:none; max-width:480px; margin:60px auto;">
+    <div style="background:var(--block); padding:36px; border-radius:4px; border:1px solid var(--line);">
+      <h2 style="font-size:2.2rem; margin-bottom:12px;">Admin Access</h2>
+      <p style="color:var(--ink2); font-size:0.95rem; margin-bottom:24px;">Enter the password defined in your <code>.env</code> file.</p>
+      <form id="admin-login-form">
+        <div class="form-group" style="margin-bottom:20px;">
+          <label for="admin-password">Password</label>
+          <input type="password" id="admin-password" name="password" required placeholder="••••••••" style="background:var(--bg);">
+          <div class="error-text" id="admin-login-error"></div>
+        </div>
+        <button type="submit" class="btn" style="width:100%; padding:14px;">Unlock Dashboard</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Dashboard Section -->
+  <div id="admin-dashboard-section" style="display:none;">
+    <div class="admin-header">
+      <div class="admin-nav">
+        <button type="button" class="admin-tab-btn active" data-target="pane-products">Garments</button>
+        <button type="button" class="admin-tab-btn" data-target="pane-orders">Orders</button>
+        <button type="button" class="admin-tab-btn" data-target="pane-subscribers">Subscribers</button>
+      </div>
+      <div>
+        <button type="button" class="btn btn-secondary btn-small" id="admin-logout-btn">Log Out</button>
+      </div>
+    </div>
+
+    <div class="admin-content">
+      <!-- Garments Pane -->
+      <div id="pane-products" class="admin-tab-pane">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; flex-wrap:wrap; gap:16px;">
+          <div>
+            <h3 style="font-size:1.8rem; margin:0 0 4px 0; font-weight:500;">Product Inventory</h3>
+            <p style="color:var(--ink2); margin:0; font-size:0.9rem;">Manage fabrics, prices, stock per size, and photos.</p>
+          </div>
+          <button type="button" class="btn" id="btn-open-add-product">+ Add Garment</button>
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Garment</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Inventory (XS-XL)</th>
+                <th>Visual</th>
+                <th>Featured</th>
+                <th>Hero Carousel</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-products-table-body">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Orders Pane -->
+      <div id="pane-orders" class="admin-tab-pane" style="display:none;">
+        <div style="margin-bottom:24px;">
+          <h3 style="font-size:1.8rem; margin:0 0 4px 0; font-weight:500;">Customer Orders</h3>
+          <p style="color:var(--ink2); margin:0; font-size:0.9rem;">Track order lifecycle, payment types, and shipping addresses.</p>
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Order #</th>
+                <th>Customer</th>
+                <th>Items Ordered</th>
+                <th>Total</th>
+                <th>Fulfillment Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-orders-table-body">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Subscribers Pane -->
+      <div id="pane-subscribers" class="admin-tab-pane" style="display:none;">
+        <div style="margin-bottom:24px;">
+          <h3 style="font-size:1.8rem; margin:0 0 4px 0; font-weight:500;">Drop List Subscribers</h3>
+          <p style="color:var(--ink2); margin:0; font-size:0.9rem;">Emails captured via the footer subscription form.</p>
+        </div>
+
+        <div style="overflow-x:auto; max-width:600px;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Email Address</th>
+                <th>Joined Date</th>
+              </tr>
+            </thead>
+            <tbody id="admin-subscribers-table-body">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Modal (Add / Edit) -->
+  <div class="admin-modal" id="product-modal">
+    <div class="admin-modal-box">
+      <h3 id="modal-title" style="margin:0 0 20px 0; font-size:1.5rem; font-weight:500;">Add Garment</h3>
+      <form id="product-form">
+        <input type="hidden" id="product-id">
+
+        <div class="form-grid" style="gap:14px;">
+          <div class="form-group col-full">
+            <label for="p-name">Garment Name *</label>
+            <input type="text" id="p-name" name="name" required placeholder="e.g. Field overshirt">
+          </div>
+
+          <div class="form-group">
+            <label for="p-slug">URL Slug (leave blank to auto-generate)</label>
+            <input type="text" id="p-slug" name="slug" placeholder="field-overshirt">
+          </div>
+
+          <div class="form-group">
+            <label for="p-category">Category *</label>
+            <select id="p-category" name="category" required>
+              <option value="Overshirts">Overshirts</option>
+              <option value="Tees">Tees</option>
+              <option value="Pants">Pants</option>
+              <option value="Knits">Knits</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="p-price">Price (₹) *</label>
+            <input type="number" id="p-price" name="price" required placeholder="4900" min="0">
+          </div>
+
+          <div class="form-group">
+            <label for="p-label">Dotted Tile Big Label *</label>
+            <input type="text" id="p-label" name="tile_label" required placeholder="Over&shy;shirt">
+          </div>
+
+          <div class="form-group col-full">
+            <label for="p-image-url">Image URL (Optional)</label>
+            <input type="text" id="p-image-url" name="image_url" placeholder="https://... or /uploads/...">
+          </div>
+
+          <div class="form-group col-full">
+            <label for="product-image-file">Or Upload Photo (Optional)</label>
+            <input type="file" id="product-image-file" accept="image/*">
+          </div>
+
+          <div class="form-group col-full">
+            <label for="p-desc">Description</label>
+            <textarea id="p-desc" name="description" rows="3" placeholder="Garment silhouette and design story..."></textarea>
+          </div>
+
+          <div class="form-group col-full">
+            <label for="p-care">Fabric & Care Details</label>
+            <textarea id="p-care" name="fabric_care" rows="2" placeholder="100% heavy cotton (340 gsm). Machine wash cold..."></textarea>
+          </div>
+
+          <div class="form-group col-full">
+            <label>Stock per Size</label>
+            <div style="display:grid; grid-template-columns:repeat(5, 1fr); gap:8px;">
+              <div>
+                <small style="color:var(--ink2)">XS</small>
+                <input type="number" id="p-stock-xs" name="stock_xs" value="5" min="0">
+              </div>
+              <div>
+                <small style="color:var(--ink2)">S</small>
+                <input type="number" id="p-stock-s" name="stock_s" value="8" min="0">
+              </div>
+              <div>
+                <small style="color:var(--ink2)">M</small>
+                <input type="number" id="p-stock-m" name="stock_m" value="12" min="0">
+              </div>
+              <div>
+                <small style="color:var(--ink2)">L</small>
+                <input type="number" id="p-stock-l" name="stock_l" value="10" min="0">
+              </div>
+              <div>
+                <small style="color:var(--ink2)">XL</small>
+                <input type="number" id="p-stock-xl" name="stock_xl" value="4" min="0">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group col-full" style="flex-direction:row; align-items:center; gap:8px; margin-top:6px;">
+            <input type="checkbox" id="p-featured" name="featured" style="width:auto; margin:0;">
+            <label for="p-featured" style="margin:0; cursor:pointer;">Feature on Home Page (New Arrivals)</label>
+          </div>
+
+          <div class="form-group col-full" style="border-top:1px solid var(--line); padding-top:16px; margin-top:10px;">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+              <input type="checkbox" id="p-show-in-hero" name="show_in_hero" style="width:auto; margin:0;">
+              <label for="p-show-in-hero" style="margin:0; cursor:pointer; font-weight:500;">Show in Hero Product Carousel</label>
+            </div>
+          </div>
+
+          <div class="form-group col-full">
+            <label for="p-hero-image">Hero Cutout Image URL</label>
+            <input type="text" id="p-hero-image" name="hero_image" placeholder="/img/hero/black-moto-jacket.webp or /uploads/...">
+          </div>
+
+          <div class="form-group col-full">
+            <label for="product-hero-image-file">Or Upload Hero Photo Cutout</label>
+            <input type="file" id="product-hero-image-file" accept="image/*">
+          </div>
+
+          <div class="form-group">
+            <label for="p-hero-image-mobile">Hero Mobile Cutout URL (Optional)</label>
+            <input type="text" id="p-hero-image-mobile" name="hero_image_mobile" placeholder="/img/hero/black-moto-jacket-mobile.webp">
+          </div>
+
+          <div class="form-group">
+            <label for="p-hero-scale">Hero Scale (Default 1.0)</label>
+            <input type="number" id="p-hero-scale" name="hero_scale" step="0.05" min="0.5" max="2.0" value="1.0">
+          </div>
+
+          <div class="form-group col-full">
+            <label for="p-hero-alt">Hero Alt Text</label>
+            <input type="text" id="p-hero-alt" name="hero_alt" placeholder="Front cutout view of garment">
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:24px;">
+          <button type="button" class="btn btn-secondary" id="btn-cancel-modal">Cancel</button>
+          <button type="submit" class="btn">Save Garment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p class="big" aria-hidden="true">Beyond</p>
+  <div class="foot">
+    <span>© 2026 Beyond</span>
+    <div>
+      <a href="/shop">Shop</a>
+      <a href="/about">About</a>
+      <a href="/returns">Returns</a>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/cart.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

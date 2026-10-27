@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>About & Contact — Beyond</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<svg class="sr" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;">
+  <defs>
+    <filter id="sharpen" x="0%" y="0%" width="100%" height="100%">
+      <feConvolveMatrix order="3" kernelMatrix="0 -0.5 0  -0.5 3 -0.5  0 -0.5 0" divisor="1" edgeMode="duplicate"/>
+    </filter>
+  </defs>
+</svg>
+<div class="bg-relief" aria-hidden="true"></div>
+<header class="nav-static">
+  <a class="logo" href="/" aria-label="Beyond home">
+    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="miter"><path d="M20 3.5 36.5 15.5 30.2 36.5H9.8L3.5 15.5Z"/></svg>
+  </a>
+  <a class="brand" href="/">Beyond</a>
+  <nav>
+    <a href="/shop">Shop</a>
+    <a href="/about" class="active">About</a>
+    <a href="/bag" class="bag-nav-link">Bag (0)</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="page-header">
+    <div class="head">
+      <h2>About Beyond</h2>
+      <a href="/shop">Explore Collection</a>
+    </div>
+  </div>
+
+  <section class="about" style="border-top:none; padding-top:0;">
+    <p>Quiet clothes for loud cities.</p>
+    <div class="facts">
+      <div><b>Small runs</b>Batches of 300 or fewer, so nothing sits in a warehouse. Every garment is numbered and cut with precision.</div>
+      <div><b>Heavy fabrics</b>Cotton from 280 gsm, garment-washed so it feels worn in from day one and holds structure for years.</div>
+      <div><b>Free returns</b>Send it back within 30 days if the fit isn’t right. We arrange pickup with no friction.</div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:clamp(32px, 6vw, 80px); border-top:1px solid var(--line); padding-top:60px;">
+      <div>
+        <h3 style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight:500; margin:0 0 18px 0; letter-spacing:-0.03em;">The Philosophy</h3>
+        <p style="font-size:1.05rem; color:var(--ink2); line-height:1.7; margin-bottom:20px;">
+          Beyond began as a refusal of disposability. In a culture of endless micro-trends and fragile synthetics, we design enduring staples using dense organic cotton, dry jersey, and European linen.
+        </p>
+        <p style="font-size:1.05rem; color:var(--ink2); line-height:1.7;">
+          Our shapes are cut relaxed yet architectural, giving you comfort without forfeiting presence. We dye in muted mineral tones inspired by stone, iron, and plaster.
+        </p>
+      </div>
+
+      <div>
+        <h3 style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight:500; margin:0 0 18px 0; letter-spacing:-0.03em;">Studio & Contact</h3>
+        <p style="font-size:1.05rem; color:var(--ink2); line-height:1.7; margin-bottom:24px;">
+          For sizing guidance, batch inquiries, or studio appointments:
+        </p>
+        <div style="display:flex; flex-direction:column; gap:12px; font-size:1rem; margin-bottom:32px;">
+          <div><b>Email:</b> <a href="mailto:studio@beyondclothing.in" style="text-decoration:underline;">studio@beyondclothing.in</a></div>
+          <div><b>Studio:</b> Unit 4, Mill Compound, Lower Parel, Mumbai 400013</div>
+          <div><b>Hours:</b> Monday – Saturday, 10:00 – 19:00 IST</div>
+        </div>
+
+        <div style="background:var(--block); padding:24px; border-radius:3px; border:1px solid var(--line);">
+          <h4 style="margin:0 0 12px 0; font-size:1.15rem; font-weight:500;">Direct Message</h4>
+          <form id="contact-form" onsubmit="event.preventDefault(); document.getElementById('contact-reply').style.display='block'; this.reset();">
+            <div style="display:flex; flex-direction:column; gap:12px;">
+              <input type="text" placeholder="Your Name" required style="background:var(--bg); border:1px solid var(--line); padding:10px 14px; border-radius:3px; font-family:inherit; color:var(--ink);">
+              <input type="email" placeholder="Your Email" required style="background:var(--bg); border:1px solid var(--line); padding:10px 14px; border-radius:3px; font-family:inherit; color:var(--ink);">
+              <textarea placeholder="Your note or sizing question..." rows="3" required style="background:var(--bg); border:1px solid var(--line); padding:10px 14px; border-radius:3px; font-family:inherit; color:var(--ink);"></textarea>
+              <button type="submit" class="btn" style="align-self:flex-start;">Send Note</button>
+            </div>
+            <div id="contact-reply" style="display:none; margin-top:12px; font-size:0.9rem; color:var(--ink);">
+              Thank you. Our studio team will reply within 24 hours.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-newsletter">
+    <div class="newsletter-text">
+      <h3>Join the drop list</h3>
+      <p>Receive notice when limited fabric batches and seasonal garments are released.</p>
+    </div>
+    <div>
+      <form class="newsletter-form" id="footer-newsletter-form">
+        <input type="email" placeholder="Your email address" required aria-label="Email address for newsletter">
+        <button type="submit" class="btn">Join</button>
+      </form>
+      <div class="newsletter-msg" id="newsletter-msg"></div>
+    </div>
+  </div>
+  <p class="big" aria-hidden="true">Beyond</p>
+  <div class="foot">
+    <span>© 2026 Beyond</span>
+    <div>
+      <a href="/shop">Shop</a>
+      <a href="/about">About</a>
+      <a href="/returns">Returns</a>
+      <a href="/admin">Admin</a>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/cart.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

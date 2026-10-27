@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Returns & Exchanges — Beyond</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<svg class="sr" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;">
+  <defs>
+    <filter id="sharpen" x="0%" y="0%" width="100%" height="100%">
+      <feConvolveMatrix order="3" kernelMatrix="0 -0.5 0  -0.5 3 -0.5  0 -0.5 0" divisor="1" edgeMode="duplicate"/>
+    </filter>
+  </defs>
+</svg>
+<div class="bg-relief" aria-hidden="true"></div>
+<header class="nav-static">
+  <a class="logo" href="/" aria-label="Beyond home">
+    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="miter"><path d="M20 3.5 36.5 15.5 30.2 36.5H9.8L3.5 15.5Z"/></svg>
+  </a>
+  <a class="brand" href="/">Beyond</a>
+  <nav>
+    <a href="/shop">Shop</a>
+    <a href="/about">About</a>
+    <a href="/bag" class="bag-nav-link">Bag (0)</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="page-header">
+    <div class="head">
+      <h2>30-Day Free Returns</h2>
+      <a href="/shop">Back to Shop</a>
+    </div>
+  </div>
+
+  <section class="about" style="border-top:none; padding-top:0;">
+    <p>Wear it with confidence. If the drape or fit isn’t right, return it at zero cost.</p>
+    <div class="facts">
+      <div>
+        <b>1. Book a pickup</b>
+        Enter your order number and contact email below. Our courier partner will pick up the parcel from your doorstep.
+      </div>
+      <div>
+        <b>2. Original condition</b>
+        Items must be unworn, unwashed, with all garment tags and original packaging intact.
+      </div>
+      <div>
+        <b>3. Immediate refund</b>
+        Once inspected at our studio, your refund will be disbursed within 48 hours to your original payment method or bank account.
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 5vw, 70px); border-top:1px solid var(--line); padding-top:60px;">
+      <!-- Initiate Return Form -->
+      <div>
+        <h3 style="font-size:1.8rem; font-weight:500; margin:0 0 16px 0;">Request a Return / Exchange</h3>
+        <p style="color:var(--ink2); margin-bottom:24px; font-size:0.95rem;">
+          Please enter your order information to generate a complimentary doorstep pickup.
+        </p>
+
+        <form id="return-request-form" onsubmit="
+          event.preventDefault();
+          const ord = document.getElementById('return-ord-num').value.trim();
+          const reply = document.getElementById('return-status-msg');
+          reply.style.display = 'block';
+          reply.innerHTML = 'Return pickup scheduled for order <b>' + ord + '</b>. Our logistics partner will arrive within 24-48 business hours.';
+          this.reset();
+        ">
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div class="form-group">
+              <label for="return-ord-num">Order Number *</label>
+              <input type="text" id="return-ord-num" required placeholder="e.g. BYD-2026-123456" style="background:var(--block); border:1px solid var(--line); padding:12px; border-radius:3px; color:var(--ink);">
+            </div>
+            <div class="form-group">
+              <label for="return-email">Email Address *</label>
+              <input type="email" id="return-email" required placeholder="Email used during checkout" style="background:var(--block); border:1px solid var(--line); padding:12px; border-radius:3px; color:var(--ink);">
+            </div>
+            <div class="form-group">
+              <label for="return-reason">Reason for Return</label>
+              <select id="return-reason" style="background:var(--block); border:1px solid var(--line); padding:12px; border-radius:3px; color:var(--ink); font-family:inherit;">
+                <option value="size_too_small">Size is too small</option>
+                <option value="size_too_large">Size is too large</option>
+                <option value="color_fit">Fit / silhouette not as expected</option>
+                <option value="exchange">Exchange for different size</option>
+                <option value="other">Other reason</option>
+              </select>
+            </div>
+            <button type="submit" class="btn" style="align-self:flex-start; margin-top:8px;">Generate Return Label & Pickup</button>
+          </div>
+          <div id="return-status-msg" style="display:none; margin-top:16px; padding:16px; background:var(--block); border:1px solid var(--line); border-radius:3px; font-size:0.95rem; line-height:1.5;"></div>
+        </form>
+      </div>
+
+      <!-- Return FAQs -->
+      <div>
+        <h3 style="font-size:1.8rem; font-weight:500; margin:0 0 16px 0;">Frequently Asked Questions</h3>
+        <div style="display:flex; flex-direction:column; gap:20px; font-size:0.95rem; color:var(--ink2); line-height:1.6;">
+          <div>
+            <b style="color:var(--ink); display:block; margin-bottom:4px;">How long do I have to return an item?</b>
+            You have 30 calendar days from the date of delivery to initiate a return or exchange.
+          </div>
+          <div>
+            <b style="color:var(--ink); display:block; margin-bottom:4px;">Are return pickups completely free?</b>
+            Yes. We cover 100% of the return freight and pickup costs across India.
+          </div>
+          <div>
+            <b style="color:var(--ink); display:block; margin-bottom:4px;">Can I exchange for another size?</b>
+            Yes, subject to stock availability in our workshop. If the size is out of stock, we issue a full refund immediately.
+          </div>
+          <div>
+            <b style="color:var(--ink); display:block; margin-bottom:4px;">How are Cash on Delivery orders refunded?</b>
+            For COD purchases, our support team will contact you for your UPI ID or bank account details to transfer the refund directly upon parcel receipt.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-newsletter">
+    <div class="newsletter-text">
+      <h3>Join the drop list</h3>
+      <p>Receive notice when limited fabric batches and seasonal garments are released.</p>
+    </div>
+    <div>
+      <form class="newsletter-form" id="footer-newsletter-form">
+        <input type="email" placeholder="Your email address" required aria-label="Email address for newsletter">
+        <button type="submit" class="btn">Join</button>
+      </form>
+      <div class="newsletter-msg" id="newsletter-msg"></div>
+    </div>
+  </div>
+  <p class="big" aria-hidden="true">Beyond</p>
+  <div class="foot">
+    <span>© 2026 Beyond</span>
+    <div>
+      <a href="/shop">Shop</a>
+      <a href="/about">About</a>
+      <a href="/returns">Returns</a>
+      <a href="/admin">Admin</a>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/cart.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

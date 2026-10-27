@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beyond — Quiet clothes for loud cities</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="/img/hero/black-moto-jacket.webp" type="image/webp">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<svg class="sr" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;">
+  <defs>
+    <filter id="sharpen" x="0%" y="0%" width="100%" height="100%">
+      <feConvolveMatrix order="3" kernelMatrix="0 -0.5 0  -0.5 3 -0.5  0 -0.5 0" divisor="1" edgeMode="duplicate"/>
+    </filter>
+  </defs>
+</svg>
+<div class="bg-relief" aria-hidden="true"></div>
+<header>
+  <a class="logo" href="/" aria-label="Beyond home">
+    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="miter"><path d="M20 3.5 36.5 15.5 30.2 36.5H9.8L3.5 15.5Z"/></svg>
+  </a>
+  <a class="brand" href="/">Beyond</a>
+  <nav>
+    <a href="/shop">Shop</a>
+    <a href="/about">About</a>
+    <a href="/bag" class="bag-nav-link">Bag (0)</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <h1 class="sr">Beyond, a clothing store</h1>
+
+    <!-- Soft radial white glow behind cutouts -->
+    <div class="hero-glow" aria-hidden="true"></div>
+
+    <!-- Product Cutout Carousel Stage -->
+    <div class="hero-stage-wrap" role="region" aria-roledescription="carousel" aria-label="Featured garments carousel" tabindex="0">
+      <div class="hero-stage" id="hero-stage"></div>
+    </div>
+
+    <!-- Pager Navigation & Motion Tilt -->
+    <nav class="hero-pager" id="hero-pager" aria-label="Carousel pagination"></nav>
+
+    <!-- Woven thread headline canvas -->
+    <canvas id="c" aria-hidden="true"></canvas>
+
+    <div class="cap">
+      <p>Heavy cotton and washed linen, made in small runs. The Autumn drop is live.</p>
+      <a class="btn" href="/shop">Shop the drop</a>
+    </div>
+  </div>
+
+  <section id="shop-section">
+    <div class="head"><h2>New arrivals</h2><a href="/shop">View all</a></div>
+    <div class="grid" id="arrivals-grid">
+      <!-- Dynamically loaded from database -->
+      <a class="tile" href="/shop"><div class="art dots"><span>Over&shy;shirt</span></div><div class="meta"><span>Field overshirt</span><span>₹4,900</span></div></a>
+      <a class="tile" href="/shop"><div class="art dots"><span>Tee</span></div><div class="meta"><span>Heavy tee</span><span>₹1,800</span></div></a>
+      <a class="tile" href="/shop"><div class="art dots"><span>Pants</span></div><div class="meta"><span>Wide trouser</span><span>₹4,200</span></div></a>
+      <a class="tile" href="/shop"><div class="art dots"><span>Knit</span></div><div class="meta"><span>Ribbed knit</span><span>₹5,400</span></div></a>
+    </div>
+  </section>
+
+  <section class="about">
+    <p>Quiet clothes for loud cities.</p>
+    <div class="facts">
+      <div><b>Small runs</b>Batches of 300 or fewer, so nothing sits in a warehouse.</div>
+      <div><b>Heavy fabrics</b>Cotton from 280 gsm, garment-washed so it feels worn in.</div>
+      <div><b>Free returns</b>Send it back within 30 days if the fit isn’t right. <a href="/returns" style="text-decoration:underline;">Learn more</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-newsletter">
+    <div class="newsletter-text">
+      <h3>Join the drop list</h3>
+      <p>Receive notice when limited fabric batches and seasonal garments are released.</p>
+    </div>
+    <div>
+      <form class="newsletter-form" id="footer-newsletter-form">
+        <input type="email" placeholder="Your email address" required aria-label="Email address for newsletter">
+        <button type="submit" class="btn">Join</button>
+      </form>
+      <div class="newsletter-msg" id="newsletter-msg"></div>
+    </div>
+  </div>
+  <p class="big" aria-hidden="true">Beyond</p>
+  <div class="foot">
+    <span>© 2026 Beyond</span>
+    <div>
+      <a href="/shop">Shop</a>
+      <a href="/about">About</a>
+      <a href="/returns">Returns</a>
+      <a href="/admin">Admin</a>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/hero.js"></script>
+<script src="/js/cart.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/carousel.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

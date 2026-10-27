@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your Bag — Beyond</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<svg class="sr" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;">
+  <defs>
+    <filter id="sharpen" x="0%" y="0%" width="100%" height="100%">
+      <feConvolveMatrix order="3" kernelMatrix="0 -0.5 0  -0.5 3 -0.5  0 -0.5 0" divisor="1" edgeMode="duplicate"/>
+    </filter>
+  </defs>
+</svg>
+<div class="bg-relief" aria-hidden="true"></div>
+<header class="nav-static">
+  <a class="logo" href="/" aria-label="Beyond home">
+    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="miter"><path d="M20 3.5 36.5 15.5 30.2 36.5H9.8L3.5 15.5Z"/></svg>
+  </a>
+  <a class="brand" href="/">Beyond</a>
+  <nav>
+    <a href="/shop">Shop</a>
+    <a href="/about">About</a>
+    <a href="/bag" class="active bag-nav-link">Bag (0)</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="page-header">
+    <div class="head">
+      <h2>Shopping Bag</h2>
+      <a href="/shop">Continue Shopping</a>
+    </div>
+  </div>
+
+  <div id="bag-view">
+    <!-- Rendered dynamically by main.js -->
+  </div>
+</main>
+
+<footer>
+  <div class="footer-newsletter">
+    <div class="newsletter-text">
+      <h3>Join the drop list</h3>
+      <p>Receive notice when limited fabric batches and seasonal garments are released.</p>
+    </div>
+    <div>
+      <form class="newsletter-form" id="footer-newsletter-form">
+        <input type="email" placeholder="Your email address" required aria-label="Email address for newsletter">
+        <button type="submit" class="btn">Join</button>
+      </form>
+      <div class="newsletter-msg" id="newsletter-msg"></div>
+    </div>
+  </div>
+  <p class="big" aria-hidden="true">Beyond</p>
+  <div class="foot">
+    <span>© 2026 Beyond</span>
+    <div>
+      <a href="/shop">Shop</a>
+      <a href="/about">About</a>
+      <a href="/returns">Returns</a>
+      <a href="/admin">Admin</a>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/cart.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
