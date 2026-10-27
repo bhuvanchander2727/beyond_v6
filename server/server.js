@@ -79,6 +79,10 @@ try {
 }
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`Beyond clothing store running at http://localhost:${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Beyond clothing store running at http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;

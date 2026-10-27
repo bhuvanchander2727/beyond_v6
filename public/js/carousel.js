@@ -35,8 +35,44 @@
     }
 
     if (!items || items.length < 2) {
-      console.warn('Carousel requires at least 2 items.');
-      return;
+      items = [
+        {
+          slug: 'black-moto-jacket',
+          name: 'Black moto jacket',
+          price: 8400,
+          image: '/img/hero/black-moto-jacket.webp',
+          mobileImage: '/img/hero/black-moto-jacket-mobile.webp',
+          alt: 'Black moto jacket front view cutout',
+          scale: 1.0
+        },
+        {
+          slug: 'black-boxy-hoodie',
+          name: 'Black boxy hoodie',
+          price: 4800,
+          image: '/img/hero/black-hoodie.webp',
+          mobileImage: '/img/hero/black-hoodie-mobile.webp',
+          alt: 'Black boxy hoodie front view cutout',
+          scale: 1.0
+        },
+        {
+          slug: 'heather-grey-hoodie',
+          name: 'Heather grey hoodie',
+          price: 4800,
+          image: '/img/hero/grey-hoodie.webp',
+          mobileImage: '/img/hero/grey-hoodie-mobile.webp',
+          alt: 'Heather grey hoodie front view cutout',
+          scale: 1.0
+        },
+        {
+          slug: 'heavy-fleece-hoodie',
+          name: 'Heavy fleece hoodie',
+          price: 5200,
+          image: '/img/hero/heavy-fleece-hoodie.webp',
+          mobileImage: '/img/hero/heavy-fleece-hoodie-mobile.webp',
+          alt: 'Heavy fleece hoodie front view cutout',
+          scale: 1.0
+        }
+      ];
     }
 
     const n = items.length;

@@ -1,13 +1,32 @@
-const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
 
-const dbPath = path.join(__dirname, 'store.db');
+const isVercel = Boolean(process.env.VERCEL);
+const dbPath = isVercel ? path.join('/tmp', 'store.db') : path.join(__dirname, 'store.db');
+
+if (isVercel) {
+  const bundledDb = path.join(__dirname, 'store.db');
+  if (fs.existsSync(bundledDb) && !fs.existsSync(dbPath)) {
+    try {
+      fs.copyFileSync(bundledDb, dbPath);
+    } catch (e) {
+      console.warn('Could not copy bundled store.db to /tmp:', e.message);
+    }
+  }
+}
+
+const Database = require('better-sqlite3');
 const db = new Database(dbPath);
 
 // Enable WAL mode for better concurrency and performance
-db.pragma('journal_mode = WAL');
-db.pragma('foreign_keys = ON');
+try {
+  db.pragma('journal_mode = WAL');
+} catch (e) {
+  console.warn('WAL mode note:', e.message);
+}
+try {
+  db.pragma('foreign_keys = ON');
+} catch (e) {}
 
 // Initialize schema
 db.exec(`

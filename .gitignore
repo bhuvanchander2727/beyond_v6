@@ -41,3 +41,5 @@ lerna-debug.log*
 .idea/
 *.sublime-project
 *.sublime-workspace
+
+.vercel
